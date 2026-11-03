@@ -4,12 +4,12 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
-        source = "git@github.com:MorpheApp/morphe-patches.git"
-        author = "MorpheApp"
+        name = "Morphe Patches + Bilibili danmaku"
+        description = "Morphe Patches with Bilibili danmaku for YouTube (community fork)"
+        source = "https://github.com/RizkLee/morphe-patches"
+        author = "MorpheApp (upstream) / RizkLee (Bilibili port)"
         contact = "na"
-        website = "https://morphe.software"
+        website = "https://github.com/RizkLee/morphe-patches"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }

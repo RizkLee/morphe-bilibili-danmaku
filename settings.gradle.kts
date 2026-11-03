@@ -1,6 +1,10 @@
 rootProject.name = "morphe-patches"
 
 pluginManagement {
+    // Developer fallback when the published settings plugin is unavailable.
+    file("build/local-deps/morphe-patches-gradle-plugin").takeIf { it.isDirectory }?.let {
+        includeBuild(it)
+    }
     repositories {
         mavenLocal()
         gradlePluginPortal()
@@ -20,7 +24,7 @@ pluginManagement {
 }
 
 plugins {
-    id("app.morphe.patches") version "2.1.0-dev.1"
+    id("app.morphe.patches") version "2.1.0"
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
@@ -40,7 +44,8 @@ include(":patches:stub")
 mapOf(
     "morphe-patcher" to "app.morphe:morphe-patcher",
 ).forEach { (libraryPath, libraryName) ->
-    val libDir = file("../$libraryPath")
+    val libDir = file("../$libraryPath").takeIf { it.isDirectory }
+        ?: file("build/local-deps/$libraryPath")
     if (libDir.exists()) {
         includeBuild(libDir) {
             dependencySubstitution {
@@ -52,7 +57,10 @@ mapOf(
 
 // Include morphe-patches-library as composite build if it exists locally.
 // It is a multi-module project, so each artifact maps to a specific subproject.
-file("../morphe-patches-library").let { libDir ->
+(
+    file("../morphe-patches-library").takeIf { it.isDirectory }
+        ?: file("build/local-deps/morphe-patches-library")
+).let { libDir ->
     if (libDir.exists()) {
         includeBuild(libDir) {
             dependencySubstitution {

@@ -74,6 +74,12 @@ public class SheetBottomDialog {
      * @return A configured {@link SlideDialog} instance ready to be shown.
      */
     public static SlideDialog createSlideDialog(@NonNull Context context, @NonNull View contentView, int animationDuration) {
+        return createSlideDialog(context, contentView, animationDuration, true);
+    }
+
+    /** The no-spacer variant is intended for sheets aligned to an existing player edge. */
+    public static SlideDialog createSlideDialog(@NonNull Context context, @NonNull View contentView,
+                                                 int animationDuration, boolean addTopSpacer) {
         SlideDialog dialog = new SlideDialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
@@ -88,11 +94,13 @@ public class SheetBottomDialog {
         dragContainer.dialog = dialog;
 
         // Top spacer - drag handle and tap-to-dismiss area above the sheet content.
-        View spacer = new View(context);
-        spacer.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp40));
-        spacer.setOnClickListener(v -> dialog.cancel());
-        dragContainer.addView(spacer);
+        if (addTopSpacer) {
+            View spacer = new View(context);
+            spacer.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp40));
+            spacer.setOnClickListener(v -> dialog.cancel());
+            dragContainer.addView(spacer);
+        }
 
         // Content view.
         ViewGroup parent = (ViewGroup) contentView.getParent();
