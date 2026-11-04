@@ -124,4 +124,6 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 
 独立补丁入口位于 [`bilibili-addon/`](bilibili-addon/)，Android 扩展位于 [`extensions/youtube/`](extensions/youtube/src/main/java/app/morphe/extension/youtube/bilibilidanmaku/)。本地构建与签名说明见 [BILIBILI_DANMAKU_SETUP.md](BILIBILI_DANMAKU_SETUP.md)。
 
+本项目的弹幕功能建立在 [ahaduoduoduo/bilibili-youtube-danmaku](https://github.com/ahaduoduoduo/bilibili-youtube-danmaku) 插件及其仓库的工作之上，衷心感谢作者和贡献者的开源与付出。
+
 本仓库基于 [Morphe Patches](https://github.com/MorpheApp/morphe-patches) 分支开发，感谢 Morphe 及其上游项目贡献者。许可证和附加条款见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
