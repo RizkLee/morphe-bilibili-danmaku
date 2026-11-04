@@ -55,6 +55,9 @@ public class BilibiliDanmakuSourceTest {
                 BilibiliDanmakuSource.extractReference(
                         "视频分享 https://www.bilibili.com/video/BV1abcdefgh1?p=2 。"));
         assertEquals("ep258000", BilibiliDanmakuSource.extractReference("ep258000"));
+        assertEquals("https://b23.tv/abc123", BilibiliDanmakuSource.extractReference("【视频分享】 https://b23.tv/abc123"));
+        assertTrue(BilibiliDanmakuSource.isShortReference("https://b23.tv/abc123"));
+        assertFalse(BilibiliDanmakuSource.isShortReference("https://www.bilibili.com/video/BV1abcdefgh1"));
         assertEquals("https://www.bilibili.com/video/BV1abcdefgh1",
                 BilibiliDanmakuSource.extractReference("复制 https\\://www\\.bilibili.com/video/BV1abcdefgh1"));
         assertEquals("https://www.bilibili.com/bangumi/play/ep258000",
@@ -64,6 +67,7 @@ public class BilibiliDanmakuSourceTest {
         for (String invalid : Arrays.asList(
                 "分享 https://evil.example/video/BV1abcdefgh1",
                 "分享 https://bilibili.com.evil.example/video/BV1abcdefgh1",
+                "分享 https://b23.tv.evil.example/abc123",
                 "任意字符串 BV1abcdefgh1")) {
             try {
                 BilibiliDanmakuSource.extractReference(invalid);

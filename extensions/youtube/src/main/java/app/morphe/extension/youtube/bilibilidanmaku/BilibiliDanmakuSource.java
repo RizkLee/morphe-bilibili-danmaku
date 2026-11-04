@@ -297,9 +297,44 @@ final class BilibiliDanmakuSource {
         String protocol = url.getProtocol();
         String host = url.getHost().toLowerCase(Locale.ROOT);
         if ((!"https".equalsIgnoreCase(protocol) && !"http".equalsIgnoreCase(protocol))
-                || (!"bilibili.com".equals(host) && !host.endsWith(".bilibili.com"))) {
+                || (!"bilibili.com".equals(host) && !host.endsWith(".bilibili.com") && !"b23.tv".equals(host))
+                || (url.getPort() != -1 && url.getPort() != 443 && url.getPort() != 80)
+                || url.getUserInfo() != null) {
             throw new IOException("链接不是 B 站官方域名，请粘贴 bilibili.com 地址或 BV/av/ep/ss 编号");
         }
+    }
+
+    static boolean isShortReference(String reference) throws IOException {
+        if (reference == null || !reference.contains("://")) return false;
+        ensureOfficialUrl(reference);
+        return "b23.tv".equalsIgnoreCase(new URL(reference).getHost());
+    }
+
+    /** Resolve the official shortener without forwarding account cookies or following foreign redirects. */
+    static String expandShortReference(String reference) throws IOException {
+        String current = reference;
+        for (int i = 0; i < 5; i++) {
+            ensureOfficialUrl(current);
+            URL url = new URL(current);
+            if (!isShortReference(current)) return current;
+            // Never transmit a share URL over cleartext, including redirects.
+            if (!"https".equalsIgnoreCase(url.getProtocol()) || (url.getPort() != -1 && url.getPort() != 443))
+                throw new IOException("B 站短链接必须使用 HTTPS");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            try {
+                connection.setConnectTimeout(10000);
+                connection.setReadTimeout(10000);
+                connection.setInstanceFollowRedirects(false);
+                connection.setRequestProperty("User-Agent", UA);
+                int status = connection.getResponseCode();
+                if (status < 300 || status >= 400) throw new IOException("B 站短链接无法展开（HTTP " + status + "）");
+                String location = connection.getHeaderField("Location");
+                if (location == null || location.isEmpty()) throw new IOException("B 站短链接缺少跳转地址");
+                current = new URL(url, location).toString();
+                ensureOfficialUrl(current);
+            } finally { connection.disconnect(); }
+        }
+        throw new IOException("B 站短链接跳转次数过多");
     }
 
     /** The signed view API avoids HTTP 412 reported by the old unsigned view endpoint. */

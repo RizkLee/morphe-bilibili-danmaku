@@ -404,6 +404,20 @@ public final class BilibiliDanmakuController {
         final String reference;
         try { reference = BilibiliDanmakuSource.extractReference(sharedText); }
         catch (java.io.IOException ex) { toast(host, ex.getMessage()); return; }
+        try {
+            if (BilibiliDanmakuSource.isShortReference(reference)) {
+                final String id = videoId;
+                setStatus("正在解析 B 站分享链接…");
+                launch(ticket -> {
+                    String expanded = BilibiliDanmakuSource.expandShortReference(reference);
+                    MAIN.post(() -> {
+                        if (ticket == generation && id.equals(videoId) && !host.isFinishing() && !host.isDestroyed())
+                            manual(host, expanded);
+                    });
+                });
+                return;
+            }
+        } catch (java.io.IOException ex) { toast(host, ex.getMessage()); return; }
         if (reference.matches("(?is).*\\bss\\d+.*")) {
             final String id = videoId;
             setStatus("正在获取番剧剧集…");
