@@ -3,10 +3,10 @@ patches {
     about {
         name = "Bilibili danmaku add-on"
         description = "Bilibili danmaku add-on for Morphe YouTube"
-        source = "https://github.com/RizkLee/morphe-patches"
+        source = "https://github.com/RizkLee/morphe-bilibili-danmaku"
         author = "RizkLee"
-        contact = "https://github.com/RizkLee/morphe-patches/issues"
-        website = "https://github.com/RizkLee/morphe-patches"
+        contact = "https://github.com/RizkLee/morphe-bilibili-danmaku/issues"
+        website = "https://github.com/RizkLee/morphe-bilibili-danmaku"
         license = "GPL-3.0"
     }
 }

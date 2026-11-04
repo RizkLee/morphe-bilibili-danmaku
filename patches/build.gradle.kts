@@ -6,10 +6,10 @@ patches {
     about {
         name = "Morphe Patches + Bilibili danmaku"
         description = "Morphe Patches with Bilibili danmaku for YouTube (community fork)"
-        source = "https://github.com/RizkLee/morphe-patches"
+        source = "https://github.com/RizkLee/morphe-bilibili-danmaku"
         author = "MorpheApp (upstream) / RizkLee (Bilibili port)"
         contact = "na"
-        website = "https://github.com/RizkLee/morphe-patches"
+        website = "https://github.com/RizkLee/morphe-bilibili-danmaku"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }

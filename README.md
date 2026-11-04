@@ -1,299 +1,127 @@
-<div align="center"> 
-<picture>
-    <source
-      width="512px"
-      media="(prefers-color-scheme: dark)"
-      srcset="https://raw.githubusercontent.com/MorpheApp/.github/refs/heads/main/profile/assets/morphe-wordmark/morphe_wordmark_dark.svg"
-    />
-    <img 
-      width="512px"
-      src="https://raw.githubusercontent.com/MorpheApp/.github/refs/heads/main/profile/assets/morphe-wordmark/morphe_wordmark_light.svg"
-     alt="Morphe_logo"/>
-</picture>
+<div align="center">
 
-[![Website badge](https://img.shields.io/badge/Website-gray.svg?logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ29weXJpZ2h0IDIwMjUgTW9ycGhlLiBUaGlzIGlzIGNvcHlyaWdodGVkIGNvbnRlbnQsIGFuZCBub3QgbGljZW5zZWQgdW5kZXIgb3BlbiBzb3VyY2UgdGVybXMuCiAgICAgU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9Nb3JwaGVBcHAvbW9ycGhlLWJyYW5kaW5nIC0tPgoKPHN2ZwogICB3aWR0aD0iNTEyIgogICBoZWlnaHQ9IjUxMiIKICAgdmlld0JveD0iMCAwIDUxMiA1MTIiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzIiCiAgIHNvZGlwb2RpOmRvY25hbWU9Im1vcnBoZV9sb2dvX2xpZ2h0LnN2ZyIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS40LjIgKGViZjBlOTQwZDAsIDIwMjUtMDUtMDgpIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3MiIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiMwMDAwMDAiCiAgICAgYm9yZGVyb3BhY2l0eT0iMC4yNSIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBhZ2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICAgIGlua3NjYXBlOnpvb209IjEuMTU0Mjk2OSIKICAgICBpbmtzY2FwZTpjeD0iMjU2IgogICAgIGlua3NjYXBlOmN5PSIyNTYiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxNDQwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjgzNiIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzIiPgogICAgPGlua3NjYXBlOnBhZ2UKICAgICAgIHg9IjAiCiAgICAgICB5PSIwIgogICAgICAgd2lkdGg9IjUxMiIKICAgICAgIGhlaWdodD0iNTEyIgogICAgICAgaWQ9InBhZ2UyIgogICAgICAgbWFyZ2luPSIwIgogICAgICAgYmxlZWQ9IjAiIC8+CiAgPC9zb2RpcG9kaTpuYW1lZHZpZXc+CiAgPGRlZnMKICAgICBpZD0iZGVmczIiIC8+CiAgPCEtLSBMZXR0ZXIgLS0+CiAgPGcKICAgICBpZD0iTGV0dGVyIgogICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjEiPgogICAgPHBhdGgKICAgICAgIGlkPSJMZWZ0IgogICAgICAgZD0ibSAxMjMsMTQwIGMgLTIxLDAgLTM5LDE3IC00MCwzOCB2IDE5MiBjIDEsMjEgMTksMzggNDAsMzggMjEsMCAzOSwtMTcgNDAsLTM4IFYgMTc4IGMgLTEsLTIxIC0xOSwtMzggLTQwLC0zOCB6IgogICAgICAgZmlsbD0iIzFFNUFBOCIKICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjEiIC8+CiAgICA8cGF0aAogICAgICAgaWQ9IlJpZ2h0IgogICAgICAgZD0ibSAzNDksMjg1IHYgODUgYyAxLDIxIDE5LDM4IDQwLDM4IDIxLDAgMzksLTE3IDQwLC0zOCBWIDE4MiBjIC0xMSwtMTQgLTc0LDYzIC04MCwxMDMgeiIKICAgICAgIGZpbGw9IiMwMEFGQUUiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxIiAvPgogICAgPHBhdGgKICAgICAgIGlkPSJNaWRkbGUiCiAgICAgICBkPSJtIDEyNywxMDggYyAtMzQsMCAtNDQsMjUgLTQ0LDQwIHYgNTQgYyAzMCwtMzMgNzUsMjcgODAsMzMgMjgsMzIgNDQsODcgOTMsODkgNDgsLTIgNjcsLTU2IDkzLC04OSAwLDAgNDUsLTc0IDgwLC04MCAwLC0yOCAtMTEsLTQ3IC00NCwtNDcgLTM0LDAgLTU4LDUwIC03NSw3MiAtMTcsMjIgLTI1LDQ2IC01NCw0NiAtMjksMCAtMzgsLTI1IC01NCwtNDYgLTE3LC0yMiAtNDEsLTcyIC03NSwtNzIgeiIKICAgICAgIGZpbGw9InVybCgjbGluZWFyR3JhZGllbnQyKSIKICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjEiIC8+CiAgPC9nPgo8L3N2Zz4K&style=for-the-badge)](https://morphe.software) [![Documentation badge](https://img.shields.io/badge/Documentation-gray?style=for-the-badge&logo=github)](https://github.com/MorpheApp/morphe-documentation#readme) [![Subreddit badge](https://img.shields.io/badge/Reddit-gray?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/MorpheApp) [![Crowdin badge](https://img.shields.io/badge/Translations-gray?style=for-the-badge&logo=crowdin)](https://morphe.software/translate)
-<br>
-</div> 
+# Bilibili Danmaku for YouTube Morphe
 
-&nbsp;
-<p align="center">
-  <a href="https://morphe.software" title="Download Morphe">
-    <img src="https://raw.githubusercontent.com/MorpheApp/.github/refs/heads/main/profile/assets/download-morphe.svg" alt="Download Morphe" width="240"/>
-  </a>
-</p>
-&nbsp;
+**在 YouTube Morphe 播放器里看哔哩哔哩弹幕。**<br>
+A standalone Morphe add-on that brings Bilibili danmaku to the YouTube player on Android.
 
-# 🧩 Patches
-Morphe Patches
+[开始安装](#从零开始安装) · [使用弹幕](#开启和使用弹幕) · [常见问题](#常见问题) · [下载补丁](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/latest)
 
-## ❓ About
+</div>
 
-Morphe Patches are based off the prior work of [ReVanced](https://github.com/ReVanced).
-All modifications made by Morphe, along with their dates, can be found in the Git history.
+> 这是一个**社区开发的独立补丁**，不是 Morphe、YouTube 或哔哩哔哩的官方产品。补丁包只提供 Bilibili danmaku，使用时还需要官方 Morphe Patches。项目不会分发已修补的 YouTube APK。
 
-&nbsp;
-## 🩹 Patches list
+## 能做什么？
 
-<!-- PATCHES_START -->
-> **[v2.0.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;194 patches total
-<details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;109 patches</summary>
-<br>
+- 在 YouTube 播放器的 Morphe 悬浮按钮栏中打开弹幕菜单，选择开启或关闭弹幕。
+- 按 YouTube 视频标题搜索并匹配 B 站视频；也可自行搜索，粘贴 B 站分享文本、链接或 BV/av/番剧编号，选择分 P 或剧集。
+- 查看来源视频封面与标题，点击来源卡片打开对应 B 站视频；也支持导入本地 XML 弹幕文件。
+- 在播放器内调整字号、透明度、滚动速度、显示区域、过滤规则，以及同步倍率和时间偏移。
+- 为需要登录的 B 站资源导入 `SESSDATA`；登录信息由手机的 Android Keystore 加密保存在本机。
 
-**🎯 Supported versions:**
+自动匹配可能选错视频，尤其是标题差别大、存在多个版本或分 P 时；请在弹幕菜单中手动核对。B 站接口、网络、地区和账号权限也可能影响加载。
 
-| 🧪&nbsp;21.43.523 | 🧪&nbsp;21.42.241 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+## 兼容性
 
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [AI channel filter](#ai-channel-filter) | Adds options to hide videos from channels flagged as AI-generated by the AiSList community list and to report AI channels from the video menu. |  |
-| [Add to queue](#add-to-queue) | Adds a video queue to the feed flyout menu, using either the Morphe queue or a native queue that uses YouTube's playlist interface. |  |
-| [Ambient mode](#ambient-mode) | Forces Ambient mode on and adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen. |  |
-| [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
-| [Ask flyout menu](#ask-flyout-menu) | Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer. |  |
-| [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
-| [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
-| [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred caption language, add more auto-translate languages, and show captions in picture-in-picture. |  |
-| [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
-| [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
-| [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
-| [Channel search](#channel-search) | Adds an option to search inside the channel that is currently open instead of searching all of YouTube. |  |
-| [Channel whitelist](#channel-whitelist) | Adds options to allow whitelisting specific channels to show ads or override playback speeds. |  |
-| [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
-| [Copy text](#copy-text) | Adds options to copy the video title and comments by tapping and holding them. |  |
-| [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
-| [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
-| [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
-| [Custom player overlay opacity](#custom-player-overlay-opacity) | Adds an option to change the opacity of the video player background when player controls are visible. |  |
-| [DeArrow](#dearrow) | Adds options to replace video thumbnails and titles using the DeArrow API, or replace video thumbnails with image captures from the video. |  |
-| [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
-| [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
-| [Disable Shorts resuming on startup](#disable-shorts-resuming-on-startup) | Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched. |  |
-| [Disable auto feed refresh](#disable-auto-feed-refresh) | Adds an option to stop feeds from refreshing automatically after they become outdated. |  |
-| [Disable continue watching prompt](#disable-continue-watching-prompt) | Adds an option to keep autoplay going instead of pausing with a "Continue watching" prompt after a period of inactivity. |  |
-| [Disable double tap actions](#disable-double-tap-actions) | Adds an option to disable player double tap gestures. |  |
-| [Disable fullscreen gestures](#disable-fullscreen-gestures) | Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom. |  |
-| [Disable haptic feedback](#disable-haptic-feedback) | Adds an option to disable haptic feedback in the player for various actions. |  |
-| [Disable layout updates](#disable-layout-updates) | Adds an option to disable server side layout updates and use an older UI. |  |
-| [Disable player popup panels](#disable-player-popup-panels) | Adds an option to disable panels (such as live chat) from opening automatically. |  |
-| [Disable playlist autoplay](#disable-playlist-autoplay) | Adds an option to stop a playlist from automatically advancing to the next video. |  |
-| [Disable rolling number animations](#disable-rolling-number-animations) | Adds an option to disable rolling number animations of video view count, user likes, and upload time. |  |
-| [Disable scrolling speed limit](#disable-scrolling-speed-limit) | Adds an option to remove limits of how fast the home and subscription feed can be scrolled. |  |
-| [Disable sign in to TV popup](#disable-sign-in-to-tv-popup) | Adds options to disable the popups asking to sign into or connect to a TV on the same local network. |  |
-| [Disable video codecs](#disable-video-codecs) | Adds options to disable or force HDR, and to disable VP9 or AV1 codecs. |  |
-| [Double tap to seek](#double-tap-to-seek) | Adds additional double-tap to seek values to the YouTube settings menu. |  |
-| [Download post images](#download-post-images) | Adds a button and a menu item to download the images and GIFs of posts. |  |
-| [Downloads](#downloads) | Adds support to download videos with an external downloader app using the in-app download button or a video player action button, and adds an option to download videos in-app. |  |
-| [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
-| [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
-| [Feed card layout](#feed-card-layout) | Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test. |  |
-| [Feed video actions](#feed-video-actions) | Adds a Watch later button to video thumbnails in feeds, and opens the video menu by tapping and holding anywhere on a video. |  |
-| [Feed view count](#feed-view-count) | Adds the view count to the bottom left of the thumbnails of feed videos. |  |
-| [Force animations](#force-animations) | Adds an option to always turn on or off the app animations that YouTube can turn off, such as the player transitions. |  |
-| [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
-| [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
-| [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
-| [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
-| [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
-| [Hide ads](#hide-ads) | Adds options to hide general ads, Premium promotions and video ads. |  |
-| [Hide autoplay preview](#hide-autoplay-preview) | Adds an option to hide the autoplay preview at the end of videos. |  |
-| [Hide end screen cards](#hide-end-screen-cards) | Adds an option to hide suggested video cards at the end of videos. |  |
-| [Hide end screen suggested video](#hide-end-screen-suggested-video) | Adds an option to hide the suggested video at the end of videos. |  |
-| [Hide info cards](#hide-info-cards) | Adds an option to hide info cards that creators add in the video player. |  |
-| [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
-| [Hide player flyout menu components](#hide-player-flyout-menu-components) | Adds options to hide menu components that appear when pressing the gear icon in the video player. |  |
-| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
-| [Hide related video overlay](#hide-related-video-overlay) | Adds an option to hide the related video overlay shown when swiping up in fullscreen. |  |
-| [Hide related videos](#hide-related-videos) | Adds options to hide related videos. |  |
-| [Hide status bar](#hide-status-bar) | Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment. |  |
-| [Hide timestamp](#hide-timestamp) | Adds an option to hide the timestamp in the bottom left of the video player. |  |
-| [Hide video action buttons](#hide-video-action-buttons) | Adds options to hide video action buttons in fullscreen and portrait modes. |  |
-| [Loop video](#loop-video) | Adds an option to loop videos and display loop video button in the video player. |  |
-| [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
-| [Miniplayer](#miniplayer) | Adds options to change the in-app minimized player. Patching 21.28.208 and lower has more miniplayer types to choose from. |  |
-| [Mute button](#mute-button) | Adds an option to show a player button that mutes the video audio. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar. | • Hide Search app shortcut<br>• Hide Subscriptions app shortcut |
-| [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
-| [Niconico comments](#niconico-comments) | Adds an option to show live chat and chat replay as comments that scroll across the video. |  |
-| [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
-| [Open channel of live avatar](#open-channel-of-live-avatar) | Adds an option to prevent a channel's current live video from opening when tapping its avatar. |  |
-| [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app browser. |  |
-| [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
-| [Open videos fullscreen](#open-videos-fullscreen) | Adds options to automatically open videos in fullscreen portrait or landscape mode. |  |
-| [Override YouTube Music buttons](#override-youtube-music-buttons) | Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client. |  |
-| [Picture-in-picture button](#picture-in-picture-button) | Adds an option to display a picture-in-picture button in the video player. |  |
-| [Play all](#play-all) | Adds an option to play all the videos from a channel and to display play all button in the video player. |  |
-| [Playback buffer](#playback-buffer) | Adds an option to change the video playback buffer size. |  |
-| [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
-| [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
-| [Player icon style](#player-icon-style) | Adds an option to change the style of the player button icons. | • Custom icons |
-| [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
-| [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
-| [Remember live stream playback position](#remember-live-stream-playback-position) | Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream. |  |
-| [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
-| [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
-| [Restore original titles](#restore-original-titles) | Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones. |  |
-| [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike, and the like count and like ratio on the thumbnails of feed videos. |  |
-| [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
-| [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player, and adds a setting to redirect Watch later saves to a playlist of your choice. |  |
-| [Search comments](#search-comments) | Adds a button to the comments to show only the loaded comments that contain the searched words. |  |
-| [Seekbar](#seekbar) | Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration. |  |
-| [Series tracking](#series-tracking) | Adds a series library to History with local progress and episode continuation. This patch works with YouTube 21.02 and newer. |  |
-| [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube settings screen by their visible name. |  |
-| [Shorts autoplay](#shorts-autoplay) | Adds options to automatically play the next Short. |  |
-| [Shorts icon style](#shorts-icon-style) | Adds an option to change the style of the Shorts action button icons. | • Custom icons |
-| [Skip live Shorts](#skip-live-shorts) | Automatically skips live streams that appear in the Shorts feed. |  |
-| [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
-| [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content. |  |
-| [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
-| [Spoof device dimensions](#spoof-device-dimensions) | Adds an option to spoof the device dimensions which can unlock higher video qualities. |  |
-| [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
-| [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
-| [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color<br>• Light theme color |
-| [Translate posts](#translate-posts) | Adds a menu item to translate the text of posts. |  |
-| [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
-| [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
-| [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
-| [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |
+| 项目 | 已验证的组合 |
+| --- | --- |
+| 手机系统 | Android 10 / API 29 或更新版本（取决于所选 YouTube APK） |
+| YouTube 原版 APK | **21.30.216**，包名 `com.google.android.youtube` |
+| 官方 Morphe Patches | **2.1.0-dev.7**，同时启用 **Mute button** 和 **SponsorBlock** |
+| 本项目补丁 | 在 Manager 中显示为 **Bilibili danmaku** |
 
-</details>
+以上组合使用原版 APK 和官方补丁完成过**电脑端混源修补测试**。手机机型、Morphe Manager、官方补丁更新或 B 站接口变化都可能带来兼容问题；不能保证其他版本可用。竖屏弹幕布局尚未经过充分的多设备实机验收。
 
-<details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;49 patches</summary>
-<br>
+## 开始前：先弄清三个东西
 
-**🎯 Supported versions:**
+1. **Morphe Manager（Morphe）**：Android 上的工具，负责把补丁打进原版 APK 并安装。可从 [Morphe 官网](https://morphe.software/)或 [Morphe Manager 官方仓库](https://github.com/MorpheApp/morphe-manager/releases)获取。
+2. **YouTube 原版 APK**：Google 发布的安装文件，Manager 需要读取它进行修补。**YouTube Morphe** 是修补后生成的应用，不是用于再次修补的输入文件。
+3. **补丁源**：Manager 读取补丁包的位置。需要保留官方 Morphe Patches，再添加本项目的 B 站弹幕源；两者一起用于一次修补。
 
-| 🧪&nbsp;9.43.51 | 🧪&nbsp;9.42.52 | 🧪&nbsp;9.41.52 | 9.30.53 | 9.20.53 | 9.15.51 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+## 从零开始安装
 
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Android Auto](#android-auto) | Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto. |  |
-| [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
-| [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
-| [Change miniplayer color](#change-miniplayer-color) | Adds an option to change the miniplayer background color to match the fullscreen player. |  |
-| [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
-| [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
-| [Crossfade](#crossfade) | Adds a true dual-player crossfade between consecutive tracks. |  |
-| [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
-| [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
-| [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
-| [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
-| [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
-| [Downloads](#downloads) | Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music. |  |
-| [Enable audio/video switch](#enable-audio-video-switch) | Adds an option to switch between the audio and the video version of a track by redirecting videoId. |  |
-| [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
-| [Enable exclusive audio playback](#enable-exclusive-audio-playback) | Enables the option to play audio without video. |  |
-| [Enable forced miniplayer](#enable-forced-miniplayer) | Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs. |  |
-| [Enable swipe to dismiss miniplayer](#enable-swipe-to-dismiss-miniplayer) | Adds an option to enable dismissing the miniplayer by swiping down on it. |  |
-| [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
-| [Force portrait orientation](#force-portrait-orientation) | Adds an option to keep the app in portrait orientation when the device is rotated. |  |
-| [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
-| [Hide ads](#hide-ads) | Adds options to hide fullscreen ads, Premium promotions and video ads. |  |
-| [Hide buttons](#hide-buttons) | Adds options to hide the cast, history, notification, search, voice search, sound search, and Library New buttons. |  |
-| [Hide flyout menu components](#hide-flyout-menu-components) | Adds options to hide individual items from the player and queue flyout menus. |  |
-| [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
-| [Hide music action buttons](#hide-music-action-buttons) | Adds options to hide action buttons under the player. |  |
-| [Jam queue sharing](#jam-queue-sharing) | Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported. |  |
-| [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
-| [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
-| [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
-| [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
-| [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
-| [Playlist track tap action](#playlist-track-tap-action) | Adds an option to play only the tapped track of a playlist or album, or to add it to the queue, instead of replacing the queue with the whole playlist. |  |
-| [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
-| [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
-| [Remember shuffle state](#remember-shuffle-state) | Adds an option to remember the shuffle state when playing a new track or playlist. |  |
-| [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
-| [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
-| [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of tracks with Return YouTube Dislike. |  |
-| [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
-| [Scrobbling](#scrobbling) | Adds options to add played tracks to Last.fm and ListenBrainz. |  |
-| [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube Music settings screen by their visible name. |  |
-| [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
-| [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip non-music segments. |  |
-| [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
-| [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
-| [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
-| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 18+ providers in the lyrics panel. |  |
+### 第 1 步：安装并设置 Morphe Manager
 
-</details>
+1. 在 Android 手机上打开 [Morphe 官网](https://morphe.software/)，下载并安装 Android 版 Morphe / Morphe Manager。按系统提示允许当前浏览器或文件管理器安装应用。
+2. 打开 Manager，等待自带的 **Morphe Patches** 官方补丁源加载完成。准备至少 1 GB 可用空间，并保持网络连接。
+3. 进入 Manager 的**设置 → 修补（Patching）**，开启**专家模式（Expert mode）**。这样才能在同一次修补中分别选择官方源和本项目源的补丁。不同 Manager 版本的界面文字可能略有不同。
 
-<details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;31 patches</summary>
-<br>
+### 第 2 步：添加 B 站弹幕补丁源
 
-**🎯 Supported versions:**
+打开 Manager 的 **来源（Sources）→ + → 远程（Remote）**，粘贴下面完整地址并添加：
 
-| 🧪&nbsp;2026.44.0 | 🧪&nbsp;2026.43.0 | 🧪&nbsp;2026.42.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+```text
+https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.json
+```
 
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [App icon](#app-icon) | Adds an option to select from the Reddit app icons available in the manifest. |  |
-| [Copy text](#copy-text) | Adds an option to make post and comment text selectable and copyable. Disables collapsing comments. This patch works with Reddit 2026.24.0 and newer. |  |
-| [Custom branding name for Reddit](#custom-branding-name-for-reddit) | Changes the Reddit app name to the name specified in patch options. | • App name |
-| [Custom font](#custom-font) | Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime. |  |
-| [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
-| [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier. |  |
-| [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
-| [Download location](#download-location) | Adds options to choose the folder and file name of downloaded images and videos, which can use the subreddit, author and account, and can be set per account. |  |
-| [Feed media max height](#feed-media-max-height) | Adds an option to change the maximum height of images, videos and galleries in the feed. |  |
-| [Force system font](#force-system-font) | Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto. |  |
-| [Full width feed media](#full-width-feed-media) | Adds an option to show images and videos edge to edge in the feed and post details, without side padding and rounded corners. |  |
-| [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
-| [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
-| [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide the Trending shelves from feed and search suggestions. |  |
-| [Hide ads](#hide-ads) | Adds options to hide ads. |  |
-| [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
-| [Hide media viewer components](#hide-media-viewer-components) | Adds options to hide the "See the conversation" button and the title, buttons and video controls of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer. |  |
-| [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
-| [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
-| [Keep feed position](#keep-feed-position) | Adds an option to keep the feed at the same position after closing a post, image or video, instead of moving the opened post to the top of the screen. |  |
-| [Media viewer black background](#media-viewer-black-background) | Adds an option to use a black background behind images and videos in the media viewer, instead of the theme background color. |  |
-| [Media viewer fade](#media-viewer-fade) | Adds an option to lower or remove the dark fade behind the caption when viewing images and videos. |  |
-| [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
-| [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
-| [Redgifs audio](#redgifs-audio) | Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy. |  |
-| [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
-| [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
-| [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
-| [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
-| [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
-| [Start as guest](#start-as-guest) | Skips the forced startup login screen using Reddit's native guest browsing mode. |  |
+也可以尝试 [一键添加 GitHub 补丁源](https://morphe.software/add-source?github=RizkLee/morphe-bilibili-danmaku&app=com.google.android.youtube)，或手动输入 `https://github.com/RizkLee/morphe-bilibili-danmaku`。仓库曾名为 `RizkLee/morphe-patches`；已有旧 CDN 源的用户建议改用上面的新地址。保留官方 Morphe Patches 源；不要把本项目源和旧版的「Morphe Patches + Bilibili danmaku」整合包同时用于 YouTube，否则可能重复执行同一补丁。
 
-</details>
+如果远程源下载失败，在[发布页](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/latest)下载 `.mpp` 文件，再通过 **来源 → + → 本地（Local）** 选择它。本地导入不会自动更新，以后需要重新选择新文件。添加远程源的步骤可参考 [Morphe 官方说明](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md)。
 
-<details>
-<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
-<br>
+### 第 3 步：准备原版 YouTube APK
 
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Change installer source](#change-installer-source) | Spoofs the installer source so the app appears to be installed from an app store. | • Spoofed package installer name |
-| [Clone app](#clone-app) | Changes the app package name to allow installing the same app multiple times. By default ".morphe" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior. | • Package name<br>• Update permissions<br>• Update providers |
-| [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch may cause unexpected issues with some apps and does not work if the app is installed by root mounting |  |
-| [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
-| [Spoof signature](#spoof-signature) | Spoofs the package signature of the original APK. |  |
+1. 下载 Google 签名的 **YouTube 21.30.216** 原版单文件 APK：[APKMirror 对应下载页](https://www.apkmirror.com/apk/google-inc/youtube/youtube-21-30-216-release/youtube-21-30-216-2-android-apk-download/)（`nodpi`，支持多种 CPU 架构，Android 10+）。在页面上选择 **Download APK**，不要误选广告按钮。
+2. 保存下载的 `.apk` 文件，记住它的位置。不要选择已安装的 YouTube Morphe、之前修补过的 APK，也不要把输出 APK 再次作为输入。
+3. 在 Manager 中确认官方补丁源使用 **2.1.0-dev.7**。如果当前官方源已更新且不兼容，可从 [官方 2.1.0-dev.7 发布页](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.7)下载其 `.mpp`，以本地来源添加；为避免重复，只在本次修补中使用一份官方来源。新版本需自行确认兼容性。
 
-</details>
+### 第 4 步：一次选择两个来源的补丁
 
-<!-- PATCHES_END -->
+1. 回到 Manager 首页选择 **YouTube**，选择版本 **21.30.216**，然后选择刚下载的原版 APK。
+2. 在专家模式的补丁选择界面，确认官方源与 B 站弹幕源都对 YouTube 启用。多个来源通常显示为不同标签页；如果少了某个标签，检查来源是否启用、是否为 YouTube 排除，或在界面的提示中恢复该来源。
+3. 切到 **Morphe Patches 官方源**标签，保留需要的官方补丁，并确认启用 **Mute button** 和 **SponsorBlock**。非 root 常规安装还应保留官方 **GmsCore support**。这两个前置补丁为弹幕提供播放器按钮和播放时间事件；不想使用静音按钮或 SponsorBlock 功能时，可以在修补后应用的设置中关闭它们。
+4. 切到本项目源标签，勾选 **Bilibili danmaku**。检查其他选项后点击 **修补（Patch）**。Manager 可能提示混用来源存在风险；本项目独立补丁正是为与上述官方版本一同修补而设计，但其他版本仍需自行验证。
+5. 等待修补完成后点击**安装**，按 Android 提示允许安装。不要中途删除原 APK。
 
-## Contributing
+> 已有 YouTube Morphe 的用户：如果安装时提示签名不一致，先备份应用数据并检查能否使用原来的 Manager 签名；卸载旧版可能清除数据。普通非 root 修补可能使用独立包名，可与原版 YouTube 共存，具体以 Manager 的安装提示为准。
 
-We currently accept pull requests for fixes/improvements to YouTube, YT Music, and Reddit.
-If you have developed patches for other apps, you are encouraged to release your patches in a third party repository.
-See the [Patches template](https://github.com/morpheapp/morphe-patches-template) for more information.  
+### 第 5 步：首次启动和 Google 登录
 
-## 📜 License
+打开修补后的 YouTube Morphe。非 root 安装若提示需要 GmsCore，请按提示安装官方 [Morphe MicroG-RE](https://github.com/MorpheApp/MicroG-RE/releases)，再返回 YouTube Morphe 登录 Google 账号。按设备和安装方式，是否需要 GmsCore 可能不同；请以 Manager 和应用提示为准。
 
-Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE), with additional conditions under GPLv3 Section 7:
+## 开启和使用弹幕
 
-- **Attribution (7b):** Any use of this code, including derivative works, must preserve all original notices and disclaimers.
-- **Name & Branding Restrictions (7c & 7e):** Derivative works must use their own distinct branding. The **"Morphe"** name, logos, and trademarks may not be used for the branding or title of derivative works (e.g., names like *"Morphe Plus"*, *"Morphe Expanded"*, or *"Morphe UserXYZ"* are strictly prohibited).
+1. 在 YouTube Morphe 打开 **设置 → Morphe → 播放器 → 悬浮按钮**，启用 **B 站弹幕按钮**。
+2. 播放一个普通视频，点击播放器上的 B 站弹幕悬浮按钮，打开底部菜单，再打开**弹幕显示**。
+3. 默认尝试按当前 YouTube 标题匹配 B 站来源。请检查菜单中的封面与标题；不准确时使用**搜索 B 站视频**或**粘贴视频链接**。支持粘贴分享原文，例如：
 
-See the [LICENSE](LICENSE) file for full GPLv3 terms and the [NOTICE](NOTICE) file for full conditions of GPLv3 Section 7.
+   ```text
+   【视频标题-哔哩哔哩】https://www.bilibili.com/bangumi/play/ep258000
+   ```
+
+4. 若是分 P 或番剧，选择实际对应的分 P / 剧集。加载完成后，弹幕将随 YouTube 播放进度显示。
+5. 两个视频的剪辑不同步时，在 **时间轴同步**中调整倍率与偏移；点击数字即可手动输入。视频开头相差固定时间时通常先调偏移；越播越偏时再考虑倍率。
+
+部分 B 站资源无需登录；如果显示未登录、接口拒绝或需要账号权限，可按下面的步骤导入自己的登录信息。
+
+## 导入 B 站 SESSDATA
+
+`SESSDATA` 是 B 站账号的登录凭证。**只在自己的设备之间传递，不要发到群聊、Issue、截图或公开网盘。** 菜单中的「B 站账号」也有分步引导。
+
+1. 在电脑 Chrome 或 Edge 打开 [bilibili.com](https://www.bilibili.com/) 并登录。
+2. 按 `F12` 打开开发者工具，进入 **Application / 应用程序 → Cookies → https://www.bilibili.com**；若左侧面板被折叠，先展开 Storage / 存储。
+3. 找到名称为 `SESSDATA` 的条目，只复制它的 **Value / 值**。将其通过可信的私人方式传到自己的手机。
+4. 在 YouTube Morphe 的弹幕菜单中打开 **B 站账号**，按引导粘贴、验证并保存。失效时可重新导入，也可在同一页面清除。
+
+该值在手机上使用 Android Keystore 加密保存，并在需要时发送给 B 站官方接口。`SESSDATA` 常为 `HttpOnly` Cookie，普通书签 JavaScript 不能可靠地读取它，因此请使用浏览器开发者工具。不要将账号凭证提交到本仓库。
+
+## 常见问题
+
+**找不到弹幕按钮？** 确认两套来源同时启用，已勾选本项目的 Bilibili danmaku 以及官方 Mute button、SponsorBlock；安装后打开一个视频，再检查 **Morphe → 播放器 → 悬浮按钮**。如果设置项缺失，请用原版 APK 重新修补。
+
+**提示缺少官方播放器事件？** 在官方来源补丁列表里启用 **Mute button** 和 **SponsorBlock**，与本补丁一起重新修补；不要只选择本项目的单个补丁。
+
+**提示 `MORPHE_BRANDING.TXT` 或 APK 已修改？** 选错了输入文件。下载并选择未经修补的 Google 原版 APK，不能在已有 YouTube Morphe 上再叠加打补丁。
+
+**显示未登录或加载失败？** 尝试导入有效的 `SESSDATA`，并检查 B 站账号、网络、地区和视频权限。凭证可能过期；可在菜单中清除并重新导入。
+
+**弹幕不匹配或不同步？** 在菜单里手动选择正确的 B 站视频、分 P / 剧集，然后调整时间偏移与倍率。
+
+**补丁源无法下载或更新？** 先检查手机能否访问源地址；可试用上面的 GitHub 地址，或从[发布页](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/latest)下载 `.mpp` 后以本地来源导入。网络访问、镜像缓存和 Manager 版本都可能影响更新。
+
+**修补或安装仍失败？** 在 Manager 失败页面复制完整日志，到 [Issues](https://github.com/RizkLee/morphe-bilibili-danmaku/issues)说明 Android、Manager、YouTube APK、官方补丁及本补丁版本和复现步骤。提交前删除 Cookie、`SESSDATA` 等敏感信息。
+
+## 开发与致谢
+
+独立补丁入口位于 [`bilibili-addon/`](bilibili-addon/)，Android 扩展位于 [`extensions/youtube/`](extensions/youtube/src/main/java/app/morphe/extension/youtube/bilibilidanmaku/)。本地构建与签名说明见 [BILIBILI_DANMAKU_SETUP.md](BILIBILI_DANMAKU_SETUP.md)。
+
+本仓库基于 [Morphe Patches](https://github.com/MorpheApp/morphe-patches) 分支开发，感谢 Morphe 及其上游项目贡献者。许可证和附加条款见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
