@@ -131,8 +131,7 @@ final class BilibiliDanmakuOverlayView extends View {
 
     private int rowCount() {
         if (portraitFullscreen()) {
-            return Math.max(1, Math.min(10,
-                    (int) (portraitAreaHeight() / (lineHeightPx() + 20 * density))));
+            return BilibiliPortraitLayout.rowCount(portraitAreaHeight(), lineHeightPx(), density);
         }
         int limit = 12;
         return Math.max(1, Math.min(limit,
@@ -142,7 +141,7 @@ final class BilibiliDanmakuOverlayView extends View {
     private boolean portraitFullscreen() { return getHeight() > getWidth(); }
 
     /** Reserve the title/player controls above and bottom navigation below portrait fullscreen video. */
-    private float portraitTop() { return Math.max(130 * density, getHeight() * .32f); }
+    private float portraitTop() { return BilibiliPortraitLayout.top(getHeight(), density); }
 
     private float portraitBottom() { return Math.min(getHeight() * .14f, 78 * density); }
 
@@ -152,7 +151,7 @@ final class BilibiliDanmakuOverlayView extends View {
     }
 
     private float portraitLaneSpacing() {
-        return Math.min(lineHeightPx() + 24 * density, portraitAreaHeight() / rowCount());
+        return portraitAreaHeight() / rowCount();
     }
 
     private int fixedLaneCount() {

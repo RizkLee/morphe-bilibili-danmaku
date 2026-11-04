@@ -1,8 +1,8 @@
-# YouTube Morphe — Bilibili 弹幕独立补丁 2.0.5
+# YouTube Morphe — Bilibili 弹幕独立补丁 2.0.6
 
 这是单独的 Bilibili danmaku 补丁包，需要和官方 Morphe Patches 一起使用。目前按 YouTube 原版 **21.30.216**、官方补丁 **2.1.0-dev.7** 验证过实际修补。使用未经修改的 Google 原版 APK；已修补的 Morphe APK 不能作为输入。
 
-补丁源：`https://github.com/RizkLee/morphe-patches`。发布页面：`https://github.com/RizkLee/morphe-patches/releases/tag/v2.0.5`。元数据直链：`https://raw.githubusercontent.com/RizkLee/morphe-patches/main/patches-bundle.json`。
+补丁源：`https://cdn.jsdelivr.net/gh/RizkLee/morphe-patches@main/patches-bundle.json`。GitHub 备用源：`https://github.com/RizkLee/morphe-patches`。发布页面：`https://github.com/RizkLee/morphe-patches/releases/tag/v2.0.6`。元数据直链：`https://raw.githubusercontent.com/RizkLee/morphe-patches/main/patches-bundle.json`。
 
 ## Morphe Manager 安装
 
@@ -19,4 +19,4 @@ SESSDATA 是登录会话，不要公开或发送给陌生人。部分公开资�
 
 ## 开发构建
 
-配置 JDK 21、Android SDK 36、build-tools 36.1.0 和项目的本地 Maven 依赖后，在仓库根目录运行 `scripts/build-bilibili-addon.ps1`。产物是 `bilibili-addon/patches/build/libs/patches-2.0.5.mpp`。脚本会运行 Android 单元测试、生成独立 DEX，并使用未纳入版本控制的 `morphe-signing.key` 签名。请勿提交或公开私钥。
+配置 JDK 21、Android SDK 36、build-tools 36.1.0 和项目的本地 Maven 依赖后，在仓库根目录运行 `scripts/build-bilibili-addon.ps1`。产物是 `bilibili-addon/patches/build/libs/patches-2.0.6.mpp`。脚本会运行 Android 单元测试、生成独立 DEX，并使用未纳入版本控制的 `morphe-signing.key` 签名。发布前将签名包复制到 `dist/`，更新清单后运行 `python scripts/verify-bilibili-source.py`；`created_at` 必须使用无时区后缀的 UTC 时间。请勿提交或公开私钥。
