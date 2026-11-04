@@ -70,11 +70,9 @@ public final class BilibiliDanmakuController {
             }
             if (!observed) {
                 observed = true;
-                PlayerType.getOnChange().addObserver(BilibiliDanmakuController::setPlayerType);
-                VideoState.getOnChange().addObserver(BilibiliDanmakuController::setVideoState);
-                VideoInformation.onPlaybackSpeedChange.addObserver(BilibiliDanmakuController::setSpeed);
-                setSpeed(VideoInformation.getPlaybackSpeed());
+                app.morphe.extension.youtube.addon.AddOnApi.addVideoStateListener(BilibiliDanmakuController::setVideoState);
             }
+            setSpeed(VideoInformation.getPlaybackSpeed());
 
             BilibiliDanmakuOverlayView layer = (BilibiliDanmakuOverlayView) overlayRoot.findViewWithTag(OVERLAY_TAG);
             if (layer == null) {
@@ -123,6 +121,8 @@ public final class BilibiliDanmakuController {
 
     /** Injection point. Milliseconds of the current YouTube playback position. */
     public static void setVideoTime(long timeMs) {
+        setPlayerType(PlayerType.getCurrent());
+        setSpeed(VideoInformation.getPlaybackSpeed());
         synchronized (CLOCK) {
             sampledVideoTimeMs = timeMs;
             sampledAtRealtimeMs = SystemClock.elapsedRealtime();
@@ -144,7 +144,7 @@ public final class BilibiliDanmakuController {
         MAIN.post(() -> { updateView(); maybeStart(); });
     }
 
-    private static void setVideoState(VideoState state) {
+    public static void setVideoState(VideoState state) {
         synchronized (CLOCK) {
             boolean next = state == VideoState.PLAYING;
             if (playing && !next && sampledVideoTimeMs >= 0) {
@@ -204,6 +204,33 @@ public final class BilibiliDanmakuController {
     static String displaySource() { return currentSource; }
     static String displaySourceTitle() { return currentSourceTitle; }
     static String displaySourceCover() { return currentSourceCover; }
+
+    static void openCurrentSource(Context context) {
+        String reference = currentSource;
+        if (reference.isEmpty() || "本地 XML".equals(reference)) return;
+        try {
+            String normalized = BilibiliDanmakuSource.extractReference(reference);
+            String url;
+            if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
+                url = normalized;
+            } else if (normalized.matches("(?i)ep\\d+|ss\\d+")) {
+                url = "https://www.bilibili.com/bangumi/play/" + normalized;
+            } else {
+                url = "https://www.bilibili.com/video/" + normalized;
+            }
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.setPackage("tv.danmaku.bili");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            try {
+                context.startActivity(intent);
+            } catch (android.content.ActivityNotFoundException missingApp) {
+                intent.setPackage(null);
+                context.startActivity(intent);
+            }
+        } catch (Exception ex) {
+            toast(context, "无法打开来源视频：" + ex.getMessage());
+        }
+    }
     static boolean hasComments() { return !currentData.isEmpty(); }
 
     static List<DanmakuComment> findComments(String keyword) {
@@ -373,8 +400,10 @@ public final class BilibiliDanmakuController {
         });
     }
 
-    static void manual(Activity host, String reference) {
-        if (reference.isEmpty()) { toast(host, "请输入 B 站链接"); return; }
+    static void manual(Activity host, String sharedText) {
+        final String reference;
+        try { reference = BilibiliDanmakuSource.extractReference(sharedText); }
+        catch (java.io.IOException ex) { toast(host, ex.getMessage()); return; }
         if (reference.matches("(?is).*\\bss\\d+.*")) {
             final String id = videoId;
             setStatus("正在获取番剧剧集…");
@@ -391,13 +420,25 @@ public final class BilibiliDanmakuController {
         } else loadVideoSource(host, reference);
     }
 
-    static void loadVideoSource(Context context, String reference) {
+    static void loadVideoSource(Context context, String sharedText) {
+        final String reference;
+        try { reference = BilibiliDanmakuSource.extractReference(sharedText); }
+        catch (java.io.IOException ex) { toast(context, ex.getMessage()); return; }
         final String id = videoId;
         setStatus("正在解析：" + reference);
         prefs(context).edit().putBoolean("enabled", true).apply();
         startedForVideo = id;
         launch(ticket -> {
             BilibiliDanmakuSource.VideoSource info = SOURCE.resolve(reference);
+            // Show the source card as soon as metadata arrives; downloading the
+            // danmaku segments can take considerably longer than video lookup.
+            MAIN.post(() -> {
+                if (ticket != generation || !id.equals(videoId)) return;
+                currentSource = reference;
+                currentSourceTitle = info.title;
+                currentSourceCover = info.cover;
+                BilibiliDanmakuSheet.sourceChanged();
+            });
             List<DanmakuComment> comments = SOURCE.download(info, (done, total) ->
                     MAIN.post(() -> {
                         if (ticket == generation && id.equals(videoId)) setStatus("下载弹幕 " + done + "/" + total + " 段");

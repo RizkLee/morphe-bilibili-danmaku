@@ -25,7 +25,7 @@ public class BilibiliDanmakuSourceTest {
         assertEquals("https://i1.hdslb.com/bfs/bangumi/example.png",
                 BilibiliDanmakuSource.normalizeCover("https://i1.hdslb.com/bfs/bangumi/example.png"));
         assertEquals("", BilibiliDanmakuSource.normalizeCover("https://hdslb.com.evil.example/x"));
-        assertEquals("", BilibiliDanmakuSource.normalizeCover("http://i0.hdslb.com/x"));
+        assertEquals("https://i0.hdslb.com/x", BilibiliDanmakuSource.normalizeCover("http://i0.hdslb.com/x"));
         assertEquals("", BilibiliDanmakuSource.normalizeCover("https://i0.hdslb.com:444/x"));
     }
 
@@ -43,6 +43,32 @@ public class BilibiliDanmakuSourceTest {
             } catch (IOException expected) {
                 // Rejection is expected.
             }
+        }
+    }
+
+    @Test public void copiedShareTextExtractsEpisodeAndPreservesPages() throws Exception {
+        assertEquals("https://www.bilibili.com/bangumi/play/ep258000",
+                BilibiliDanmakuSource.extractReference(
+                        "【《小马宝莉 友谊的魔力 第八季（中配）》 第3话 地设一对-哔哩哔哩番剧】"
+                                + "https://www.bilibili.com/bangumi/play/ep258000"));
+        assertEquals("https://www.bilibili.com/video/BV1abcdefgh1?p=2",
+                BilibiliDanmakuSource.extractReference(
+                        "视频分享 https://www.bilibili.com/video/BV1abcdefgh1?p=2 。"));
+        assertEquals("ep258000", BilibiliDanmakuSource.extractReference("ep258000"));
+        assertEquals("https://www.bilibili.com/video/BV1abcdefgh1",
+                BilibiliDanmakuSource.extractReference("复制 https\\://www\\.bilibili.com/video/BV1abcdefgh1"));
+        assertEquals("https://www.bilibili.com/bangumi/play/ep258000",
+                BilibiliDanmakuSource.extractReference(
+                        "【《小马宝莉 友谊的魔力 第八季（中配）》 第3话】"
+                                + "https\\\\://www\\\\.bilibili.com/bangumi/play/ep258000"));
+        for (String invalid : Arrays.asList(
+                "分享 https://evil.example/video/BV1abcdefgh1",
+                "分享 https://bilibili.com.evil.example/video/BV1abcdefgh1",
+                "任意字符串 BV1abcdefgh1")) {
+            try {
+                BilibiliDanmakuSource.extractReference(invalid);
+                throw new AssertionError("Accepted invalid share text: " + invalid);
+            } catch (IOException expected) { }
         }
     }
 

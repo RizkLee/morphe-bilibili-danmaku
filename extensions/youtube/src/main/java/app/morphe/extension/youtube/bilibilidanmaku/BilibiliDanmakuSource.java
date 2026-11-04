@@ -2,8 +2,6 @@ package app.morphe.extension.youtube.bilibilidanmaku;
 
 import android.util.Xml;
 
-import com.google.protobuf.CodedInputStream;
-import com.google.protobuf.WireFormat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +45,7 @@ final class BilibiliDanmakuSource {
     static String normalizeCover(String value) {
         if (value == null || value.isEmpty()) return "";
         String url = value.startsWith("//") ? "https:" + value : value;
+        if (url.regionMatches(true, 0, "http://", 0, 7)) url = "https://" + url.substring(7);
         try {
             java.net.URL parsed = new java.net.URL(url);
             String host = parsed.getHost().toLowerCase(Locale.ROOT);
@@ -55,6 +54,35 @@ final class BilibiliDanmakuSource {
                     && (parsed.getPort() == -1 || parsed.getPort() == 443)) return url;
         } catch (Exception ignored) { }
         return "";
+    }
+
+    /** Extracts the official link from the text copied with Bilibili's Share button. */
+    static String extractReference(String sharedText) throws IOException {
+        if (sharedText == null || sharedText.trim().isEmpty()) throw new IOException("B 站链接为空");
+        String input = sharedText.trim();
+        // Some sharing channels escape URL punctuation repeatedly (e.g. https\\\\://).
+        // Limit the passes so malformed input cannot induce unbounded processing.
+        for (int i = 0; i < 8; i++) {
+            String decoded = input.replace("\\\\", "\\").replace("\\/", "/")
+                    .replace("\\.", ".").replace("\\:", ":");
+            if (decoded.equals(input)) break;
+            input = decoded;
+        }
+        Matcher url = Pattern.compile("(?i)https?://[^\\s<>\\[\\]\\u300c\\u300d\\u3010\\u3011\\\"“”]+")
+                .matcher(input);
+        if (url.find()) {
+            String extracted = url.group();
+            while (!extracted.isEmpty() && ",.，。!！?？;；)）".indexOf(extracted.charAt(extracted.length() - 1)) >= 0) {
+                extracted = extracted.substring(0, extracted.length() - 1);
+            }
+            ensureOfficialUrl(extracted);
+            return extracted;
+        }
+        if (input.contains("://")) throw new IOException("无法识别 B 站官方链接");
+        Matcher identifier = Pattern.compile("(?i)^(?:BV[0-9a-z]{10}|av\\d+|ep\\d+|ss\\d+)$")
+                .matcher(input);
+        if (identifier.matches()) return input;
+        throw new IOException("请粘贴 B 站分享文本、官方链接或 BV/av/ep/ss 编号");
     }
     private static final int[] MIXIN_KEY_ENC_TAB = {
         46,47,18,2,53,8,23,32,15,50,10,31,58,3,45,35,27,43,5,49,33,9,42,19,29,28,14,39,
@@ -290,7 +318,7 @@ final class BilibiliDanmakuSource {
     }
 
     VideoSource resolve(String reference) throws Exception {
-        String input = reference == null ? "" : reference.trim();
+        String input = extractReference(reference);
         if (input.isEmpty()) throw new IOException("请输入 BV、av、ep、ss 或 B 站链接");
         ensureOfficialUrl(input);
         Matcher ep = EPISODE.matcher(input);
@@ -311,7 +339,9 @@ final class BilibiliDanmakuSource {
             duration = selected.optInt("duration", duration);
             title += " · " + selected.optString("part", "P" + p);
         }
-        return valid(new VideoSource(title, input, aid, cid, duration, data.optString("pic", "")));
+        String cover = data.optString("pic", "");
+        if (cover.isEmpty()) cover = data.optString("cover", "");
+        return valid(new VideoSource(title, input, aid, cid, duration, cover));
     }
 
     List<Episode> episodes(String seasonReference) throws Exception {
@@ -343,10 +373,20 @@ final class BilibiliDanmakuSource {
                 return valid(new VideoSource(season.optString("title") + " " + ep.optString("title") + " "
                         + ep.optString("long_title"), "ep" + episodeId,
                         ep.optLong("aid"), ep.optLong("cid"), (int) Math.ceil(durationMs / 1000.0),
-                        ep.optString("cover", season.optString("cover", ""))));
+                        firstCover(ep.optString("cover"), ep.optString("horizontal_cover"),
+                                ep.optString("share_copy"), season.optString("cover"),
+                                season.optString("horizontal_cover"), season.optString("square_cover"))));
             }
         }
         throw new IOException("未找到 ep" + episodeId + "，可能受地区或账号权限限制");
+    }
+
+    private static String firstCover(String... candidates) {
+        for (String candidate : candidates) {
+            String normalized = normalizeCover(candidate);
+            if (!normalized.isEmpty()) return normalized;
+        }
+        return "";
     }
 
     static VideoSource valid(VideoSource source) throws IOException {
@@ -399,19 +439,19 @@ final class BilibiliDanmakuSource {
 
     static List<DanmakuComment> parseSegment(byte[] bytes) throws IOException {
         List<DanmakuComment> comments = new ArrayList<>();
-        CodedInputStream input = CodedInputStream.newInstance(bytes);
+        BilibiliProtoInput input = BilibiliProtoInput.newInstance(bytes);
         while (!input.isAtEnd()) {
             int tag = input.readTag();
             if (tag == 0) break;
-            if (WireFormat.getTagFieldNumber(tag) == 1 && WireFormat.getTagWireType(tag) == WireFormat.WIRETYPE_LENGTH_DELIMITED) {
-                CodedInputStream elem = CodedInputStream.newInstance(input.readByteArray());
+            if ((tag >>> 3) == 1 && (tag & 7) == 2) {
+                BilibiliProtoInput elem = BilibiliProtoInput.newInstance(input.readByteArray());
                 long time = -1;
                 int mode = 1, color = 0xffffff, fontsize = 25;
                 String content = "";
                 while (!elem.isAtEnd()) {
                     int fieldTag = elem.readTag();
                     if (fieldTag == 0) break;
-                    switch (WireFormat.getTagFieldNumber(fieldTag)) {
+                    switch ((fieldTag >>> 3)) {
                         case 2: time = elem.readInt64(); break;
                         case 3: mode = elem.readInt32(); break;
                         case 4: fontsize = elem.readInt32(); break;

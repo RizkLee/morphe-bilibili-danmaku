@@ -130,11 +130,29 @@ final class BilibiliDanmakuOverlayView extends View {
     }
 
     private int rowCount() {
-        // A portrait fullscreen container can be several times taller than the actual video.
-        // Cap rows so it never stretches the danmaku lanes across the entire portrait screen.
-        int limit = getHeight() > getWidth() ? 7 : 12;
+        if (portraitFullscreen()) {
+            return Math.max(1, Math.min(10,
+                    (int) (portraitAreaHeight() / (lineHeightPx() + 20 * density))));
+        }
+        int limit = 12;
         return Math.max(1, Math.min(limit,
                 (int) (getHeight() * area / 100.0 / lineHeightPx())));
+    }
+
+    private boolean portraitFullscreen() { return getHeight() > getWidth(); }
+
+    /** Reserve the title/player controls above and bottom navigation below portrait fullscreen video. */
+    private float portraitTop() { return Math.max(130 * density, getHeight() * .32f); }
+
+    private float portraitBottom() { return Math.min(getHeight() * .14f, 78 * density); }
+
+    private float portraitAreaHeight() {
+        return Math.max(lineHeightPx(),
+                (getHeight() - portraitTop() - portraitBottom()) * Math.min(area, 90) / 100f);
+    }
+
+    private float portraitLaneSpacing() {
+        return Math.min(lineHeightPx() + 24 * density, portraitAreaHeight() / rowCount());
     }
 
     private int fixedLaneCount() {
@@ -244,7 +262,14 @@ final class BilibiliDanmakuOverlayView extends View {
             fill.setColor(Color.argb((int) (255 * opacity / 100.0), Color.red(color), Color.green(color), Color.blue(color)));
             stroke.setAlpha((int) (230 * opacity / 100.0));
             float baseline;
-            if (item.mode == 5) baseline = 10 * density + fontSizePx() + lineHeight * lanes[i];
+            if (portraitFullscreen()) {
+                float top = portraitTop();
+                float spacing = portraitLaneSpacing();
+                if (item.mode == 5) baseline = top + fontSizePx() + spacing * lanes[i];
+                else if (item.mode == 4) baseline = getHeight() - portraitBottom()
+                        - Math.max(0f, fill.getFontMetrics().descent) - spacing * lanes[i];
+                else baseline = top + spacing * ((lanes[i] % count) + 1);
+            } else if (item.mode == 5) baseline = 10 * density + fontSizePx() + lineHeight * lanes[i];
             else if (item.mode == 4) baseline = getHeight() - 10 * density
                     - Math.max(0f, fill.getFontMetrics().descent) - lineHeight * lanes[i];
             else baseline = 7 * density + lineHeight * ((lanes[i] % count) + 1);

@@ -135,7 +135,14 @@ final class BilibiliDanmakuSheet {
         foreground = ThemeUtils.getAppForegroundColor();
         muted = dark ? Color.rgb(171, 180, 191) : Color.rgb(106, 116, 130);
         contentHolder = new FrameLayout(host);
-        dialog = SheetBottomDialog.createSlideDialog(host, contentHolder, 260, false);
+        // Use the public three-argument API shipped by official Morphe.  Its
+        // top spacer is removed so the sheet stays aligned with the player.
+        dialog = SheetBottomDialog.createSlideDialog(host, contentHolder, 260);
+        if (contentHolder.getParent() instanceof ViewGroup) {
+            ViewGroup wrapper = (ViewGroup) contentHolder.getParent();
+            if (wrapper.getChildCount() > 1 && wrapper.getChildAt(0) != contentHolder)
+                wrapper.getChildAt(0).setVisibility(View.GONE);
+        }
         dialog.setOnDismissListener(ignored -> {
             ViewGroup player = BilibiliDanmakuController.playerRoot();
             if (player != null) player.removeOnLayoutChangeListener(rootLayoutListener);
@@ -360,7 +367,10 @@ final class BilibiliDanmakuSheet {
         String sourceCover = BilibiliDanmakuController.displaySourceCover();
         hero.addView(videoRow(sourceTitle.isEmpty() ? (source.isEmpty() ? "尚未选择 B 站视频" : source) : sourceTitle,
                 source.isEmpty() ? "选择匹配的视频，即可在此查看来源" : source,
-                sourceCover, () -> navigate("search"), true));
+                sourceCover, () -> {
+                    if (source.isEmpty() || "本地 XML".equals(source)) navigate("search");
+                    else BilibiliDanmakuController.openCurrentSource(host);
+                }, true));
         body.addView(hero);
         section("弹幕来源");
         item("refresh", "按标题重新匹配", "重新识别当前 YouTube 视频", () -> {
@@ -443,25 +453,12 @@ final class BilibiliDanmakuSheet {
 
     private void renderSync() {
         hint("B 站弹幕时间 = YouTube 视频时间 × 倍率 + 偏移。可调整两者使弹幕与画面同步，设置会实时保存。");
-        sliderFloat("播放倍率", "微调两站视频进度差异", "rate", .25f, 4f, 1f);
+        sliderFloat("播放倍率", "微调两站视频进度差异", "rate", .25f, 4f, 1f, true);
         long milliseconds = settings.getLong("offset_ms", 0);
         slider("偏移微调", "单位：秒，可正负调节", -120, 120, (int) Math.max(-120,
-                Math.min(120, Math.round(milliseconds / 1000f))), " s", value ->
-                saveOffset(value * 1000L));
-        section("精确输入");
-        EditText offset = input("偏移秒数（支持小数、负数）",
-                String.format(Locale.ROOT, "%.2f", settings.getLong("offset_ms", 0) / 1000d), false);
-        offset.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED
-                | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        body.addView(offset);
-        primary("应用精确偏移", () -> {
-            try {
-                double value = Double.parseDouble(offset.getText().toString().trim());
-                if (!Double.isFinite(value) || Math.abs(value) > 36000) throw new NumberFormatException();
-                saveOffset(Math.round(value * 1000));
-                navigate("sync");
-            } catch (NumberFormatException ex) { message("请输入 -36000～36000 秒内的数字"); }
-        });
+                Math.min(120, Math.round(milliseconds / 1000f))), " s",
+                value -> saveOffset(value * 1000L), false,
+                milliseconds / 1000d, -36000d, 36000d, value -> saveOffset(Math.round(value * 1000d)));
         secondaryButton("恢复默认同步", () -> {
             settings.edit().putFloat("rate", 1f).putLong("offset_ms", 0).apply();
             BilibiliDanmakuController.updateView();
@@ -680,14 +677,23 @@ final class BilibiliDanmakuSheet {
     }
 
     private void sliderFloat(String label, String detail, String key, float min, float max, float fallback) {
+        sliderFloat(label, detail, key, min, max, fallback, false);
+    }
+
+    private void sliderFloat(String label, String detail, String key, float min, float max,
+                             float fallback, boolean editable) {
         int value = Math.round(settings.getFloat(key, fallback) * 100);
         slider(label, detail, Math.round(min * 100), Math.round(max * 100), value, "×", next -> {
             settings.edit().putFloat(key, next / 100f).apply();
             BilibiliDanmakuController.updateView();
-        }, true);
+        }, true, editable ? Double.valueOf(settings.getFloat(key, fallback)) : null, min, max, precise -> {
+            settings.edit().putFloat(key, (float) precise).apply();
+            BilibiliDanmakuController.updateView();
+        });
     }
 
     private interface IntegerChange { void apply(int value); }
+    private interface DecimalChange { void apply(double value); }
     private interface BooleanChange { void apply(boolean value); }
 
     private void slider(String label, String detail, int min, int max, int initial, String unit, IntegerChange action) {
@@ -696,6 +702,13 @@ final class BilibiliDanmakuSheet {
 
     private void slider(String label, String detail, int min, int max, int initial, String unit,
                         IntegerChange action, boolean floatValue) {
+        slider(label, detail, min, max, initial, unit, action, floatValue,
+                null, min, max, null);
+    }
+
+    private void slider(String label, String detail, int min, int max, int initial, String unit,
+                        IntegerChange action, boolean floatValue, Double preciseInitial,
+                        double preciseMin, double preciseMax, DecimalChange preciseAction) {
         LinearLayout outer = column();
         outer.setPadding(dp(15), dp(12), dp(15), dp(11));
         outer.setBackground(round(surface, 14));
@@ -705,9 +718,33 @@ final class BilibiliDanmakuSheet {
         copy.addView(text(label, 15, foreground, true));
         copy.addView(text(detail, 12, muted, false));
         top.addView(copy, new LinearLayout.LayoutParams(0, -2, 1));
-        TextView value = text(floatValue ? String.format(Locale.ROOT, "%.2f", initial / 100f) + unit
-                : initial + unit, 15, BLUE, true);
-        top.addView(value);
+        boolean editable = preciseInitial != null && preciseAction != null;
+        TextView value;
+        if (editable) {
+            EditText number = new EditText(host);
+            number.setText(String.format(Locale.ROOT, "%.2f", preciseInitial));
+            number.setTextSize(15);
+            number.setTextColor(BLUE);
+            number.setSelectAllOnFocus(true);
+            number.setSingleLine(true);
+            number.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
+            number.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL
+                    | InputType.TYPE_NUMBER_FLAG_SIGNED);
+            number.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);
+            number.setBackground(round(background, 9));
+            number.setPadding(dp(8), dp(5), dp(8), dp(5));
+            number.setMinWidth(dp(67));
+            number.setContentDescription(label + "（可直接输入数字）");
+            value = number;
+            top.addView(number);
+            TextView suffix = text(unit, 14, BLUE, true);
+            suffix.setPadding(dp(4), 0, 0, 0);
+            top.addView(suffix);
+        } else {
+            value = text(floatValue ? String.format(Locale.ROOT, "%.2f", initial / 100f) + unit
+                    : initial + unit, 15, BLUE, true);
+            top.addView(value);
+        }
         outer.addView(top);
         SeekBar seek = new SeekBar(host);
         seek.setMax(max - min);
@@ -715,15 +752,49 @@ final class BilibiliDanmakuSheet {
         seek.setProgressTintList(ColorStateList.valueOf(BLUE));
         seek.setThumbTintList(ColorStateList.valueOf(BLUE));
         seek.setProgressBackgroundTintList(ColorStateList.valueOf(border));
+        final double[] lastValue = { editable ? preciseInitial : initial };
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
                 int next = min + progress;
-                value.setText(floatValue ? String.format(Locale.ROOT, "%.2f×", next / 100f) : next + unit);
-                if (fromUser) action.apply(next);
+                if (!editable || !value.hasFocus()) value.setText(floatValue
+                        ? String.format(Locale.ROOT, "%.2f", next / 100f) + (editable ? "" : unit)
+                        : next + (editable ? "" : unit));
+                if (fromUser) {
+                    lastValue[0] = floatValue ? next / 100.0 : next;
+                    action.apply(next);
+                }
             }
             @Override public void onStartTrackingTouch(SeekBar bar) {}
             @Override public void onStopTrackingTouch(SeekBar bar) {}
         });
+        if (editable) {
+            EditText number = (EditText) value;
+            Runnable commit = () -> {
+                try {
+                    double entered = Double.parseDouble(number.getText().toString().trim());
+                    if (!Double.isFinite(entered) || entered < preciseMin || entered > preciseMax)
+                        throw new NumberFormatException();
+                    preciseAction.apply(entered);
+                    lastValue[0] = entered;
+                    seek.setProgress(Math.max(0, Math.min(max - min,
+                            (int) Math.round(floatValue ? entered * 100 - min : entered - min))));
+                    number.setText(String.format(Locale.ROOT, "%.2f", entered));
+                } catch (NumberFormatException ex) {
+                    message("请输入 " + preciseMin + "～" + preciseMax + " 之间的数字");
+                    number.setText(String.format(Locale.ROOT, "%.2f", lastValue[0]));
+                }
+            };
+            number.setOnEditorActionListener((v, actionId, event) -> {
+                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                    number.clearFocus();
+                    return true;
+                }
+                return false;
+            });
+            number.setOnFocusChangeListener((v, hasFocus) -> {
+                if (!hasFocus) commit.run();
+            });
+        }
         outer.addView(seek);
         addCard(outer);
     }
