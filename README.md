@@ -138,3 +138,5 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 本项目的弹幕功能建立在 [ahaduoduoduo/bilibili-youtube-danmaku](https://github.com/ahaduoduoduo/bilibili-youtube-danmaku) 插件及其仓库的工作之上，衷心感谢作者和贡献者的开源与付出。
 
 本仓库基于 [Morphe Patches](https://github.com/MorpheApp/morphe-patches) 分支开发，感谢 Morphe 及其上游项目贡献者。许可证和附加条款见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
+
+**社区友链** · [LINUX DO](https://linux.do/)
