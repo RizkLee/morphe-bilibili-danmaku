@@ -60,17 +60,24 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 
 ### 第 3 步：准备原版 YouTube APK
 
-1. 下载 Google 签名的 **YouTube 21.30.216** 原版单文件 APK：[APKMirror 对应下载页](https://www.apkmirror.com/apk/google-inc/youtube/youtube-21-30-216-release/youtube-21-30-216-2-android-apk-download/)（`nodpi`，支持多种 CPU 架构，Android 10+）。在页面上选择 **Download APK**，不要误选广告按钮。
-2. 保存下载的 `.apk` 文件，记住它的位置。不要选择已安装的 YouTube Morphe、之前修补过的 APK，也不要把输出 APK 再次作为输入。
-3. 在 Manager 中确认官方补丁源使用 **2.1.0-dev.7**。如果当前官方源已更新且不兼容，可从 [官方 2.1.0-dev.7 发布页](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.7)下载其 `.mpp`，以本地来源添加；为避免重复，只在本次修补中使用一份官方来源。新版本需自行确认兼容性。
+1. 在 Morphe Manager 中选择 **YouTube** 进行修补。看到 **「需要帮助查找 APK 吗？」** 页面后，找到 **Bilibili danmaku add-on** 这一栏。
+2. 勾选这一栏中标有 **「推荐」** 的 YouTube 版本（图中为 **21.30.216**），然后点页面底部的 **「是的，帮我查找」**。
+
+   <img src="docs/guide/manager-find-youtube-apk.png" alt="在 Bilibili danmaku add-on 栏勾选推荐的 YouTube 21.30.216，再点「是的，帮我查找」" width="360">
+
+3. 按提示获取该版本的 **YouTube 原版 APK**，然后在 Manager 中选择这个文件，继续选择补丁。
+
+本项目已验证的官方补丁源版本为 **Morphe Patches 2.1.0-dev.7**。如果使用其他版本遇到兼容问题，可从[官方发布页](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.1.0-dev.7)下载该版本的 `.mpp`，作为本地来源添加。本次修补只启用一份官方来源。
 
 ### 第 4 步：一次选择两个来源的补丁
 
-1. 回到 Manager 首页选择 **YouTube**，选择版本 **21.30.216**，然后选择刚下载的原版 APK。
-2. 在高级模式的补丁选择界面，确认官方源与 B 站弹幕源都对 YouTube 启用。多个来源通常显示为不同标签页；如果少了某个标签，检查来源是否启用、是否为 YouTube 排除，或在界面的提示中恢复该来源。
-3. 切到 **Morphe Patches 官方源**标签，保留需要的官方补丁，并确认启用 **Mute button** 和 **SponsorBlock**。非 root 常规安装还应保留官方 **GmsCore support**。这两个前置补丁为弹幕提供播放器按钮和播放时间事件；不想使用静音按钮或 SponsorBlock 功能时，可以在修补后应用的设置中关闭它们。
-4. 切到本项目源标签，勾选 **Bilibili danmaku**。检查其他选项后点击 **修补（Patch）**。Manager 可能提示混用来源存在风险；本项目独立补丁正是为与上述官方版本一同修补而设计，但其他版本仍需自行验证。
-5. 等待修补完成后点击**安装**，按 Android 提示允许安装。不要中途删除原 APK。
+1. 在高级模式的补丁选择界面，确认顶部有 **Morphe Patches** 和 **Bilibili danmaku add-on** 两个来源标签。如果少了某个标签，检查该来源是否已启用，以及是否对 YouTube 生效。
+2. 切到 **Morphe Patches** 标签，保留需要的官方补丁，并确认勾选 **Mute button** 和 **SponsorBlock**。这两个补丁为弹幕提供播放器按钮和播放时间事件。修补完成后，可以在应用设置中关闭静音按钮或 SponsorBlock 功能。非 root 常规安装还应保留官方 **GmsCore support**。
+3. 切到 **Bilibili danmaku add-on** 标签，勾选 **Bilibili danmaku**，然后点右下角的 **「修补」**。Manager 可能会提示本次使用了多个来源，请核对所选来源和版本。
+
+   <img src="docs/guide/manager-select-danmaku-patch.png" alt="在 Bilibili danmaku add-on 标签下勾选 Bilibili danmaku 补丁" width="360">
+
+4. 等待修补完成后点击**安装**，按 Android 提示允许安装。不要中途删除原 APK。
 
 > 已有 YouTube Morphe 的用户：如果安装时提示签名不一致，先备份应用数据并检查能否使用原来的 Manager 签名；卸载旧版可能清除数据。普通非 root 修补可能使用独立包名，可与原版 YouTube 共存，具体以 Manager 的安装提示为准。
 
@@ -80,8 +87,11 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 
 ## 开启和使用弹幕
 
-1. 在 YouTube Morphe 打开 **设置 → Morphe → 播放器 → 悬浮按钮**，启用 **B 站弹幕按钮**。
-2. 播放一个普通视频，点击播放器上的 B 站弹幕悬浮按钮，打开底部菜单，再打开**显示弹幕**。
+1. 在 YouTube Morphe 播放一个普通视频，轻点画面调出播放控件，再点下图红框中的 **B站弹幕按钮**。全新安装时这个按钮默认开启。如果看不到，可到 **设置 → Morphe → 播放器 → 悬浮按钮** 检查。
+
+   <img src="docs/guide/player-danmaku-button.png" alt="播放器底部的弹幕设置按钮，红框和箭头标出了它的位置" width="420">
+
+2. 在弹出的菜单里打开 **「显示弹幕」**。这个开关首次使用时默认关闭，之后会记住你的选择。
 3. 默认尝试按当前 YouTube 标题匹配 B 站来源。请检查菜单中的封面与标题；不准确时使用**搜索视频**或**粘贴链接**。支持粘贴分享原文，例如：
 
    ```text
