@@ -5,7 +5,7 @@
 **在 YouTube Morphe 播放器里看哔哩哔哩弹幕。**<br>
 A standalone Morphe add-on that brings Bilibili danmaku to the YouTube player on Android.
 
-[开始安装](#从零开始安装) · [使用弹幕](#开启和使用弹幕) · [常见问题](#常见问题) · [下载补丁](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/latest)
+[开始安装](#从零开始安装) · [使用弹幕](#开启和使用弹幕) · [常见问题](#常见问题) · [下载 2.1.1 补丁（.mpp）](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/download/v2.1.1/patches-2.1.1.mpp)
 
 </div>
 
@@ -44,7 +44,7 @@ A standalone Morphe add-on that brings Bilibili danmaku to the YouTube player on
 
 1. 在 Android 手机上打开 [Morphe 官网](https://morphe.software/)，下载并安装 Android 版 Morphe / Morphe Manager。按系统提示允许当前浏览器或文件管理器安装应用。
 2. 打开 Manager，等待自带的 **Morphe Patches** 官方补丁源加载完成。准备至少 1 GB 可用空间，并保持网络连接。
-3. 进入 Manager 的**设置 → 修补（Patching）**，开启**专家模式（Expert mode）**。这样才能在同一次修补中分别选择官方源和本项目源的补丁。不同 Manager 版本的界面文字可能略有不同。
+3. 进入 Manager 的**设置 → 修补（Patching）**，开启**高级模式**。这样才能在同一次修补中分别选择官方源和本项目源的补丁。
 
 ### 第 2 步：添加 B 站弹幕补丁源
 
@@ -56,7 +56,7 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 
 也可以尝试 [一键添加 GitHub 补丁源](https://morphe.software/add-source?github=RizkLee/morphe-bilibili-danmaku&app=com.google.android.youtube)，或手动输入 `https://github.com/RizkLee/morphe-bilibili-danmaku`。仓库曾名为 `RizkLee/morphe-patches`；已有旧 CDN 源的用户建议改用上面的新地址。保留官方 Morphe Patches 源；不要把本项目源和旧版的「Morphe Patches + Bilibili danmaku」整合包同时用于 YouTube，否则可能重复执行同一补丁。
 
-如果远程源下载失败，在[发布页](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/latest)下载 `.mpp` 文件，再通过 **来源 → + → 本地（Local）** 选择它。本地导入不会自动更新，以后需要重新选择新文件。添加远程源的步骤可参考 [Morphe 官方说明](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md)。
+如果远程源下载失败，可从 [2.1.1 发布页](https://github.com/RizkLee/morphe-bilibili-danmaku/releases/tag/v2.1.1)下载 `patches-2.1.1.mpp`，再通过 **来源 → + → 本地（Local）** 选择它。本地导入不会自动更新，以后需要重新选择新文件。添加远程源的步骤可参考 [Morphe 官方说明](https://github.com/MorpheApp/morphe-manager/blob/main/docs/patch-sources.md)。
 
 ### 第 3 步：准备原版 YouTube APK
 
@@ -67,7 +67,7 @@ https://cdn.jsdelivr.net/gh/RizkLee/morphe-bilibili-danmaku@main/patches-bundle.
 ### 第 4 步：一次选择两个来源的补丁
 
 1. 回到 Manager 首页选择 **YouTube**，选择版本 **21.30.216**，然后选择刚下载的原版 APK。
-2. 在专家模式的补丁选择界面，确认官方源与 B 站弹幕源都对 YouTube 启用。多个来源通常显示为不同标签页；如果少了某个标签，检查来源是否启用、是否为 YouTube 排除，或在界面的提示中恢复该来源。
+2. 在高级模式的补丁选择界面，确认官方源与 B 站弹幕源都对 YouTube 启用。多个来源通常显示为不同标签页；如果少了某个标签，检查来源是否启用、是否为 YouTube 排除，或在界面的提示中恢复该来源。
 3. 切到 **Morphe Patches 官方源**标签，保留需要的官方补丁，并确认启用 **Mute button** 和 **SponsorBlock**。非 root 常规安装还应保留官方 **GmsCore support**。这两个前置补丁为弹幕提供播放器按钮和播放时间事件；不想使用静音按钮或 SponsorBlock 功能时，可以在修补后应用的设置中关闭它们。
 4. 切到本项目源标签，勾选 **Bilibili danmaku**。检查其他选项后点击 **修补（Patch）**。Manager 可能提示混用来源存在风险；本项目独立补丁正是为与上述官方版本一同修补而设计，但其他版本仍需自行验证。
 5. 等待修补完成后点击**安装**，按 Android 提示允许安装。不要中途删除原 APK。
